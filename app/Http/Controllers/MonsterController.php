@@ -57,7 +57,7 @@ class MonsterController extends Controller
         $monster_image_name = str_replace(' ', '_', $filename);
         $path = 'public/img'.'/'.$monster_image_name;
 
-        file_put_contents($path, $decoded);
+//        file_put_contents($path, $decoded);
 
 
         // I still need to replace this with ::create and add some validation.
