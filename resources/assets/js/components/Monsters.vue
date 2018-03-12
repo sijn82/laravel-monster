@@ -220,7 +220,7 @@
             capitaliseFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             },
-            repairImageBase64: function(image) {
+            repairImageBase64(image) {
                 $exploded = explode('api/monsters/img/', image )
                 return $exploded[1];
             },
