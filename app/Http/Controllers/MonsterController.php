@@ -55,7 +55,7 @@ class MonsterController extends Controller
 
         $filename = request('name').'.'.$extension;
         $monster_image_name = str_replace(' ', '_', $filename);
-        $path = public_path('img').'/'.$monster_image_name;
+        $path = 'public/img'.'/'.$monster_image_name;
 
         file_put_contents($path, $decoded);
 
