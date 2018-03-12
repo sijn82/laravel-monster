@@ -222,7 +222,7 @@
             },
             repairImageBase64: function(image) {
                 $exploded = explode('api/monsters/img/', image )
-                return $exploded;
+                return $exploded[1];
             },
         },
 
