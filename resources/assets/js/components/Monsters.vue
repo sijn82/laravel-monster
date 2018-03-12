@@ -19,7 +19,7 @@
 
                                 <!--<li class="id">{{ monster.id }}</li>-->
                                 <!--<li class="monster_image"><img :src="'storage/img/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>-->
-                                <li class="monster_image"><img src="{{ monster.monster_image_name | repairImageBase64 }}"> </li>
+                                <li class="monster_image">{{ monster.monster_image_name | repairImageBase64 }} </li>
                                 <!--<li class="monster_image"> {{ monster.monster_image_name | decodeBase64 }} </li>-->
 
                                 <div v-if="editing">
