@@ -47,15 +47,15 @@ class MonsterController extends Controller
 
 //            ]);
 
-        $exploded = explode(',', request('monster_image'));
-        $decoded = base64_decode($exploded[1]);
-        if(str_contains($exploded[0], 'jpeg'))
-            $extension = 'jpeg';
-        else $extension = 'png';
-
-        $filename = request('name').'.'.$extension;
-        $monster_image_name = str_replace(' ', '_', $filename);
-        $path = 'public/img'.'/'.$monster_image_name;
+//        $exploded = explode(',', request('monster_image'));
+//        $decoded = base64_decode($exploded[1]);
+//        if(str_contains($exploded[0], 'jpeg'))
+//            $extension = 'jpeg';
+//        else $extension = 'png';
+//
+//        $filename = request('name').'.'.$extension;
+//        $monster_image_name = str_replace(' ', '_', $filename);
+//        $path = 'public/img'.'/'.$monster_image_name;
 
 //        file_put_contents($path, $decoded);
 
@@ -66,7 +66,8 @@ class MonsterController extends Controller
             'name' => request('name'),
             'description' => request('description'),
             'aggression_level' => request('aggression_level'),
-            'monster_image_name' => $monster_image_name
+//            'monster_image_name' => $monster_image_name
+            'monster_image_name' => request('monster_image')
 
         ]);
 
