@@ -20,6 +20,10 @@ let routes = [
         component: require('./components/Parallax.vue')
     },
     {
+        path:'api/monsters/{id}',
+        component: require('./components/MonsterSolo.vue')
+    },
+    {
         path:'/monsters',
         // component: Monsters
         component: require('./components/Monsters.vue')

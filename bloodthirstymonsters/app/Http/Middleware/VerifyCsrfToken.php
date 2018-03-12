@@ -16,6 +16,9 @@ class VerifyCsrfToken extends Middleware
 
         '/monsters',
         '/monsters/new',
+        '/monsters/*',
+        '/api/monsters/*',
+        '/api/monsters/8',
         '/new-monster/upload',
         '/api/monsters/img',
         'monsters/api/monsters/img',

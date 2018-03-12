@@ -14,14 +14,16 @@ class MonsterController extends Controller
 
     public function index()
     {
-        $monsters = Monster::all()->sortBy('id');
+
+        $monsters = Monster::latest('created_at')->get();
 //        return view('master', ['monster' => $monsters]);
         return $monsters;
     }
 
     public function show(Monster $id)
     {
-        return view('master', ['monster' => $id]);
+        var_dump('$id');
+        return view('master', ['monsters' => $id]);
     }
 
     public function create()
@@ -31,15 +33,10 @@ class MonsterController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request);
         echo 'function store in use' ;
-//        var_dump($request);
-
         var_dump(request('name'));
         var_dump(request('description'));
         var_dump(request('aggression_level'));
-//        var_dump($request);
-//        var_dump(request('monster_image'));
 
 //        $this->validate(request(), [
 //
@@ -56,13 +53,14 @@ class MonsterController extends Controller
             $extension = 'jpeg';
         else $extension = 'png';
 
-
         $filename = request('name').'.'.$extension;
         $monster_image_name = str_replace(' ', '_', $filename);
         $path = storage_path('app/public/img').'/'.$monster_image_name;
 
         file_put_contents($path, $decoded);
 
+
+        // I still need to replace this with ::create and add some validation.
         Monster::forceCreate([
 
             'name' => request('name'),
@@ -74,5 +72,36 @@ class MonsterController extends Controller
 
         return ['message' => 'Yep Monster Actually Created'];
     }
+
+    public function delete(Monster $id)
+    {
+
+
+        var_dump('sup, it got here at least.');
+        var_dump($id['id']);
+        Monster::findOrFail($id['id']);
+        Monster::destroy($id['id']);
+
+//        return redirect('/monsters');
+    }
+    public function update(Request $request, Monster $id)
+    {
+        var_dump('we are in the update function');
+        var_dump(request('id'));
+        $monster = Monster::findOrFail($id['id']);
+
+        var_dump($monster);
+        Monster::where('id', request('id'))->update([
+            'name' => request('name'),
+            'description' => request('description'),
+            'aggression_level' => request('aggression_level')
+        ]);
+
+
+
+        var_dump($request);
+
+    }
+
 }
 

@@ -49,6 +49,7 @@ Vue.component('footerbar', require('./components/Footer.vue'));
 Vue.component('parallax', require('./components/Parallax.vue'));
 Vue.component('monsters', require('./components/Monsters.vue'));
 Vue.component('NewMonster', require('./components/NewMonster.vue'));
+Vue.component('MonsterSolo', require('./components/MonsterSolo.vue'));
 Vue.component('coming-soon', require('./components/ComingSoon.vue'));
 
 
@@ -81,9 +82,9 @@ const app = new Vue({
         }
     },
 
-    created() {
-        axios.get('api/monsters').then( response => {
-            console.log(response);
-        }).catch(error => console.log(error));
-    }
+    // created() {
+    //     axios.get('api/monsters').then( response => {
+    //         console.log(response);
+    //     }).catch(error => console.log(error));
+    // }
 });
