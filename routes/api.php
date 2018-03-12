@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 // This first one uploads the image to storage/app/public/img or at least it did,
 // image functionality is now in monster controller.
 // Should be deleting it not writing these comments, however I'm in comment mode.
-Route::post('monsters/img', 'ImageController@upload');
+//Route::post('monsters/img', 'ImageController@upload');
 
 
 
