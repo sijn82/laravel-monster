@@ -19,8 +19,9 @@
 
                                 <!--<li class="id">{{ monster.id }}</li>-->
                                 <!--<li class="monster_image"><img :src="'storage/img/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>-->
-                                <li class="monster_image"><img :src="'api/monsters/img/' + monster.monster_image_name"> </li>
-
+                                <li class="monster_image"><img :src="monster.monster_image_name"> </li>
+                                <!--<li class="monster_image"> {{ monster.monster_image_name | decodeBase64 }} </li>-->
+                                
                                 <div v-if="editing">
                                     <label>Name:</label>
                                     <input v-model="monster.name" class="input" type="text" name="name" placeholder="Enter Monster Name">
@@ -164,6 +165,16 @@
         },
 
         methods: {
+
+//            decodeBase64: function (){
+//                $exploded = explode(',', request('monster_image'));
+//                $decoded = base64_decode($exploded[1]);
+//                if(str_contains($exploded[0], 'jpeg'))
+//                    $extension = 'jpeg';
+//                else $extension = 'png';
+//
+//                $filename = request('name').'.'.$extension;
+//            },
 
             addMonster(){
                 this.$router.push('/monsters/new')
