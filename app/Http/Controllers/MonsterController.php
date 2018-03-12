@@ -17,7 +17,7 @@ class MonsterController extends Controller
 
         $monsters = Monster::latest('created_at')->get();
 //        return view('master', ['monster' => $monsters]);
-        var_dump($monsters['monster_image_name']);
+//        var_dump($monsters['monster_image_name']);
         return $monsters;
     }
 
