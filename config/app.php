@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://sijn82-laravel.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,8 +121,8 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
-
+//    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'errorlog'),
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
