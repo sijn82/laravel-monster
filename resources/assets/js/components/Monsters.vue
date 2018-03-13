@@ -18,8 +18,8 @@
                                     <li class="name">{{ monster.name }}</li>
 
                                 <!--<li class="id">{{ monster.id }}</li>-->
-                                <!--<li class="monster_image"><img :src="'storage/img/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>-->
-                                <li class="monster_image"><img :src="base64encoded"></li>
+                                <li class="monster_image"><img :src="'https://s3.eu-west-2.amazonaws.com/compostmonsters-upload/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>
+                                <!--<li class="monster_image"><img :src="base64encoded"></li>-->
                                 <!--<li class="monster_image"> {{ monster.monster_image_name | decodeBase64 }} </li>-->
 
                                 <div v-if="editing">

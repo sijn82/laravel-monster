@@ -58,9 +58,9 @@ class MonsterController extends Controller
         else $extension = 'png';
 
         $filename = request('name').'.'.$extension;
-
-        Storage::disk('s3')->put($filename, $decoded, 'public');
         $monster_image_name = str_replace(' ', '_', $filename);
+        Storage::disk('s3')->put($monster_image_name, $decoded, 'public');
+
 //        $path = 'public/img'.'/'.$monster_image_name;
 
 //        file_put_contents($path, $decoded);
