@@ -60,14 +60,21 @@ return [
             'visibility' => 'public',
         ],
 
+//        's3' => [
+//            'driver' => 's3',
+//            'key' => env('AWS_ACCESS_KEY_ID'),
+//            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+//            'region' => env('AWS_DEFAULT_REGION'),
+//            'bucket' => env('AWS_BUCKET'),
+//        ],
+
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => env('AKIAJXTHNPE7GWJHR4JA'),
+            'secret' => env('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'),
+            'region' => env('eu-west-2'),
+            'bucket' => env('compostmonsters-upload'),
         ],
-
     ],
 
 ];
