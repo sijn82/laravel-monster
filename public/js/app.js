@@ -5338,6 +5338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -5377,6 +5378,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
+
+        base64encoded: function base64encoded(image) {
+            //                $exploded = explode(',', request('monster_image'));
+            //                $decoded = base64_decode($exploded[1]);
+            //                if(str_contains($exploded[0], 'jpeg'))
+            //                    $extension = 'jpeg';
+            //                else $extension = 'png';
+            //
+            //                $filename = request('name').'.'.$extension;
+        },
+
         addMonster: function addMonster() {
             this.$router.push('/monsters/new');
         },
@@ -5419,6 +5431,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     filters: {
         capitaliseFirstLetter: function capitaliseFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        repairImageBase64: function repairImageBase64(image) {
+            $exploded = explode('api/monsters/img/', image);
+            return $exploded[1];
         }
     },
 
@@ -36065,7 +36081,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "monster_image"
     }, [_c('img', {
       attrs: {
-        "src": 'api/monsters/img/' + monster.monster_image_name
+        "src": 'https://s3.eu-west-2.amazonaws.com/compostmonsters-upload/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'
       }
     })]), _vm._v(" "), (_vm.editing) ? _c('div', [_c('label', [_vm._v("Name:")]), _vm._v(" "), _c('input', {
       directives: [{
