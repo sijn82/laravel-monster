@@ -48,7 +48,7 @@ class MonsterController extends Controller
 //            'monster_image' => 'required',
 
 //            ]);
-        echo config('filesystems.disks.s3');
+//        echo config('filesystems.disks.s3');
         var_dump(config('filesystems.disks.s3'));
 
         $exploded = explode(',', request('monster_image'));
