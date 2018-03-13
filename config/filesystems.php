@@ -70,10 +70,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AKIAJXTHNPE7GWJHR4JA'),
-            'secret' => env('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'),
-            'region' => env('eu-west-2'),
-            'bucket' => env('compostmonsters-upload'),
+            'key' => 'AKIAJXTHNPE7GWJHR4JA',
+            'secret' => '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',
+            'region' => 'eu-west-2',
+            'bucket' => 'compostmonsters-upload',
         ],
     ],
 
