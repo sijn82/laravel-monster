@@ -19,7 +19,7 @@
 
                                 <!--<li class="id">{{ monster.id }}</li>-->
                                 <!--<li class="monster_image"><img :src="'storage/img/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>-->
-                                <li class="monster_image"><p>{{ monster.monster_image_name | repairImageBase64 }} </p></li>
+                                <li class="monster_image"><img :src="base64encoded"></li>
                                 <!--<li class="monster_image"> {{ monster.monster_image_name | decodeBase64 }} </li>-->
 
                                 <div v-if="editing">
@@ -166,7 +166,7 @@
 
         methods: {
 
-//            decodeBase64: function (){
+            base64encoded: function (image){
 //                $exploded = explode(',', request('monster_image'));
 //                $decoded = base64_decode($exploded[1]);
 //                if(str_contains($exploded[0], 'jpeg'))
@@ -174,7 +174,7 @@
 //                else $extension = 'png';
 //
 //                $filename = request('name').'.'.$extension;
-//            },
+            },
 
             addMonster(){
                 this.$router.push('/monsters/new')

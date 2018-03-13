@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
@@ -32,7 +33,7 @@ class MonsterController extends Controller
 //        return view('master');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Storage $storage)
     {
         echo 'function store in use' ;
         var_dump(request('name'));
@@ -48,14 +49,16 @@ class MonsterController extends Controller
 
 //            ]);
 
-//        $exploded = explode(',', request('monster_image'));
-//        $decoded = base64_decode($exploded[1]);
-//        if(str_contains($exploded[0], 'jpeg'))
-//            $extension = 'jpeg';
-//        else $extension = 'png';
-//
-//        $filename = request('name').'.'.$extension;
-//        $monster_image_name = str_replace(' ', '_', $filename);
+        $exploded = explode(',', request('monster_image'));
+        $decoded = base64_decode($exploded[1]);
+        if(str_contains($exploded[0], 'jpeg'))
+            $extension = 'jpeg';
+        else $extension = 'png';
+
+        $filename = request('name').'.'.$extension;
+
+        Storage::disk('s3')->put($filename, $decoded);
+        $monster_image_name = str_replace(' ', '_', $filename);
 //        $path = 'public/img'.'/'.$monster_image_name;
 
 //        file_put_contents($path, $decoded);
@@ -67,8 +70,8 @@ class MonsterController extends Controller
             'name' => request('name'),
             'description' => request('description'),
             'aggression_level' => request('aggression_level'),
-//            'monster_image_name' => $monster_image_name
-            'monster_image_name' => request('monster_image')
+            'monster_image_name' => $monster_image_name
+//            'monster_image_name' => request('monster_image')
 
         ]);
 
