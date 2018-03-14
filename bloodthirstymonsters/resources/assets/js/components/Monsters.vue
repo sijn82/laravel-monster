@@ -18,8 +18,9 @@
                                     <li class="name">{{ monster.name }}</li>
 
                                 <!--<li class="id">{{ monster.id }}</li>-->
-                                <!--<li class="monster_image"><img :src="'storage/img/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>-->
-                                <li class="monster_image"><img :src="'api/monsters/img/' + monster.monster_image_name"> </li>
+                                <li class="monster_image"><img :src="'https://s3.eu-west-2.amazonaws.com/compostmonsters-upload/' + monster.monster_image_name + '?w=600&h=480&filt=greyscale'"> </li>
+                                <!--<li class="monster_image"><img :src="base64encoded"></li>-->
+                                <!--<li class="monster_image"> {{ monster.monster_image_name | decodeBase64 }} </li>-->
 
                                 <div v-if="editing">
                                     <label>Name:</label>
@@ -165,6 +166,16 @@
 
         methods: {
 
+            base64encoded: function (image){
+//                $exploded = explode(',', request('monster_image'));
+//                $decoded = base64_decode($exploded[1]);
+//                if(str_contains($exploded[0], 'jpeg'))
+//                    $extension = 'jpeg';
+//                else $extension = 'png';
+//
+//                $filename = request('name').'.'.$extension;
+            },
+
             addMonster(){
                 this.$router.push('/monsters/new')
             },
@@ -208,7 +219,11 @@
         filters: {
             capitaliseFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
-            }
+            },
+            repairImageBase64(image) {
+                $exploded = explode('api/monsters/img/', image )
+                return $exploded[1];
+            },
         },
 
         created() {

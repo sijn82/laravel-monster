@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+//    'default' => env('FILESYSTEM_DRIVER', 'local'),
+      'default' => env('FILESYSTEM_CLOUD', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ return [
     */
 
     'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -45,24 +48,33 @@ return [
 
         'local' => [
             'driver' => 'local',
+//            'root' => storage_path('app'),
             'root' => storage_path('app'),
         ],
 
         'public' => [
             'driver' => 'local',
+//            'root' => storage_path('app/public'),
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
+//        's3' => [
+//            'driver' => 's3',
+//            'key' => env('AWS_ACCESS_KEY_ID'),
+//            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+//            'region' => env('AWS_DEFAULT_REGION'),
+//            'bucket' => env('AWS_BUCKET'),
+//        ],
+
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => 'AKIAJXTHNPE7GWJHR4JA',
+            'secret' => '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',
+            'region' => 'eu-west-2',
+            'bucket' => 'compostmonsters-upload',
         ],
-
     ],
 
 ];

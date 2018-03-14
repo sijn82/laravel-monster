@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
@@ -17,6 +18,7 @@ class MonsterController extends Controller
 
         $monsters = Monster::latest('created_at')->get();
 //        return view('master', ['monster' => $monsters]);
+//        var_dump($monsters['monster_image_name']);
         return $monsters;
     }
 
@@ -31,7 +33,7 @@ class MonsterController extends Controller
 //        return view('master');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Storage $storage)
     {
         echo 'function store in use' ;
         var_dump(request('name'));
@@ -46,6 +48,8 @@ class MonsterController extends Controller
 //            'monster_image' => 'required',
 
 //            ]);
+//        echo config('filesystems.disks.s3');
+        var_dump(config('filesystems.disks.s3'));
 
         $exploded = explode(',', request('monster_image'));
         $decoded = base64_decode($exploded[1]);
@@ -55,9 +59,11 @@ class MonsterController extends Controller
 
         $filename = request('name').'.'.$extension;
         $monster_image_name = str_replace(' ', '_', $filename);
-        $path = storage_path('app/public/img').'/'.$monster_image_name;
+        Storage::disk('s3')->put($monster_image_name, $decoded, 'public');
 
-        file_put_contents($path, $decoded);
+//        $path = 'public/img'.'/'.$monster_image_name;
+
+//        file_put_contents($path, $decoded);
 
 
         // I still need to replace this with ::create and add some validation.
@@ -67,6 +73,7 @@ class MonsterController extends Controller
             'description' => request('description'),
             'aggression_level' => request('aggression_level'),
             'monster_image_name' => $monster_image_name
+//            'monster_image_name' => request('monster_image')
 
         ]);
 
