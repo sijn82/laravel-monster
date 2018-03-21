@@ -24,6 +24,8 @@ class Kernel extends HttpKernel
     /**
      * The application's route middleware groups.
      *
+     * Added createfreshapitoken but not appearing in github/heroku?
+     *
      * @var array
      */
     protected $middlewareGroups = [
