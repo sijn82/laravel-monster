@@ -13,11 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-// not currently in use but will be.
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+// Adding this to api routes as automatically added to web routes? should probably remove it immediately.
+//Auth::routes();
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+    return $request->user();
+});
 
 
 // This first one uploads the image to storage/app/public/img or at least it did,

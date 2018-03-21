@@ -36,6 +36,10 @@ let routes = [
     {
         path:'/coming-soon',
         component: require('./components/ComingSoon.vue')
+    },
+    {
+        path:'/dashboard',
+        // component: require('./components/passport/PersonalAccessTokens.vue')
     }
 ];
 

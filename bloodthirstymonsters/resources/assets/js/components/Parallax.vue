@@ -6,7 +6,7 @@
                     <div class="panel-heading">Parallax</div>
                     <div class="panel-body">
                         <p> This section will output the parallax design.</p>
-                        <h1 v-parallax="0.2">vue-parallax-js</h1>
+                        <!--<h1 v-parallax="0.2">vue-parallax-js</h1>-->
                         <!--<img src="storage/app/public/pensiveclem.png" v-parallax="0.2">-->
                         <!--<img src="/storage/img/pensiveclem.png" v-parallax="0.2">-->
                         <!--<router-view></router-view>-->
@@ -28,6 +28,7 @@
 </template>
 
 <style lang="scss">
+
     #parallax {
         height: 600px;
         overflow: hidden;

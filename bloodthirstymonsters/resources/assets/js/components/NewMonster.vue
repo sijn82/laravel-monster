@@ -9,37 +9,38 @@
                     <div class="panel-body">
                         <p> This section will allow new monsters to be added.</p>
 
-                        <form action="/api/monsters" enctype="multipart/form-data" method="post" name="newMonster" @submit.prevent="uploadMonster">
+                        <form class="form-horizontal" action="/api/monsters" enctype="multipart/form-data" method="post" name="newMonster" @submit.prevent="uploadMonster">
 
-                            <div>
-                                <label>Name:</label>
-                                <input v-model="form.name" class="input" type="text" name="name" placeholder="Enter Monster Name">
+                            <div class="input-group input-group-md col-md-8 col-md-offset-2">
+                                <label class="input-group-addon">Name:</label>
+                                <input v-model="form.name" class="form-control" type="text" name="name" placeholder="Enter Monster Name">
                             </div>
 
-                            <div>
-                                <label>Description:</label>
-                                <textarea v-model="form.description" class="input" type="text" name="description" placeholder="Enter Monster Description"></textarea>
+                            <div class="input-group input-group-md col-md-8 col-md-offset-2">
+                                    <label class="input-group-addon">Description:</label>
+                                    <textarea v-model="form.description" class="form-control description-textarea" type="text" name="description" placeholder="Enter Monster Description"></textarea>
+
                             </div>
 
-                            <div>
-                                <label>Aggression Level:</label>
-                                <select v-model="form.aggression_level" name="aggression_level">
-                                    <option disabled value="">Select Aggression Level</option>
-                                    <option value="calm">Calm</option>
-                                    <option value="confused">Confused</option>
-                                    <option value="agitated">Agitated</option>
-                                    <option value="chasey">Chasey</option>
-                                    <option value="bloodthirsty">Bloodthirsty</option>
-                                </select>
-                            </div>
+                                <div class="input-group input-group-md col-md-8 col-md-offset-2">
+                                        <label class="input-group-addon">Aggression Level:</label>
+                                        <select class="form-control" v-model="form.aggression_level" name="aggression_level">
+                                            <option disabled value="">Select Aggression Level</option>
+                                            <option value="calm">Calm</option>
+                                            <option value="confused">Confused</option>
+                                            <option value="agitated">Agitated</option>
+                                            <option value="chasey">Chasey</option>
+                                            <option value="bloodthirsty">Bloodthirsty</option>
+                                        </select>
+                                </div>
+
+                                <div class="input-group input-group-md col-md-8 col-md-offset-2">
+                                        <label class="input-group-addon">Upload Image:</label>
+                                        <input class="form-control" type="file" name="monster_image" @change="newFileUpload">
+                                </div>
 
                             <div>
-                                <label>Upload Image:</label>
-                                <input type="file" name="monster_image" @change="newFileUpload">
-                            </div>
-
-                            <div>
-                                <input type="submit" class="btn" value="Upload Image">
+                                <input class="input-group input-group-md col-md-2 col-md-offset-5 btn btn-success" type="submit" value="Upload Image">
                             </div>
 
                         </form>
@@ -85,6 +86,15 @@
     .dropbox:hover {
         background: lightblue; /* when mouse over to the drop zone, change color */
     }
+    .description-textarea {
+        height: 150px;
+    }
+    .input-group {
+        margin-bottom: 10px;
+    }
+    .input-group-addon {
+        width: 30%;
+    }
 
     .dropbox p {
         font-size: 1.2em;
@@ -108,6 +118,7 @@
                 },
                 // Need to check whether this is used, or the other one?
                 monster_image: '',
+                userData: {},
 
             }
         },
@@ -129,7 +140,8 @@
                     name: self.form.name,
                     description: self.form.description,
                     aggression_level: self.form.aggression_level,
-                    monster_image: self.form.monster_image
+                    monster_image: self.form.monster_image,
+                    user_id: self.userData.id
                 }).then(function (response) {
                     console.log(response.data);
                     console.log('saved monster successfully, or have i?');
@@ -139,6 +151,14 @@
             }
 
         },
+
+        created() {
+            axios.get('/api/user').then(
+                response => {
+                    console.log(response);
+                    this.userData = response.data;
+                }).catch(error => console.log(error));
+            },
 
         mounted() {
             console.log('Component New Monsters mounted.');

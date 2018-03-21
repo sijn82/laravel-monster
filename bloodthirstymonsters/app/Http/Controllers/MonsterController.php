@@ -8,6 +8,9 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use App\Monster;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class MonsterController extends Controller
 {
@@ -39,6 +42,7 @@ class MonsterController extends Controller
         var_dump(request('name'));
         var_dump(request('description'));
         var_dump(request('aggression_level'));
+        var_dump($request);
 
 //        $this->validate(request(), [
 //
@@ -72,7 +76,8 @@ class MonsterController extends Controller
             'name' => request('name'),
             'description' => request('description'),
             'aggression_level' => request('aggression_level'),
-            'monster_image_name' => $monster_image_name
+            'monster_image_name' => $monster_image_name,
+            'user_id' => request('user_id'),
 //            'monster_image_name' => request('monster_image')
 
         ]);

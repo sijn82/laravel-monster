@@ -39,6 +39,7 @@ return [
             'prefix' => '',
         ],
 
+          // Local site configuration
 //        'mysql' => [
 //            'driver' => 'mysql',
 //            'host' => env('DB_HOST', '127.0.0.1'),
@@ -53,13 +54,31 @@ return [
 //            'strict' => true,
 //            'engine' => null,
 //        ],
+
+        // Live site configuration old
+//        'mysql' => [
+//            'driver' => 'mysql',
+//            'host' => env('DB_HOST', 'sql2.freemysqlhosting.net'),
+//            'port' => env('DB_PORT', '3306'),
+//            'database' => env('DB_DATABASE', 'sql2226190'),
+//            'username' => env('DB_USERNAME', 'sql2226190'),
+//            'password' => env('DB_PASSWORD', 'qL5%mJ3%'),
+//            'unix_socket' => env('DB_SOCKET', ''),
+//            'charset' => 'utf8mb4',
+//            'collation' => 'utf8mb4_unicode_ci',
+//            'prefix' => '',
+//            'strict' => true,
+//            'engine' => null,
+//        ],
+
+        // Live site configuration new
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'sql2.freemysqlhosting.net'),
+            'host' => env('DB_HOST', 'sijn82dbinstances.cgtjpphl93i4.us-east-1.rds.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'sql2226190'),
-            'username' => env('DB_USERNAME', 'sql2226190'),
-            'password' => env('DB_PASSWORD', 'qL5%mJ3%'),
+            'database' => env('DB_DATABASE', 'sijn82_laravel'),
+            'username' => env('DB_USERNAME', 'sijn82'),
+            'password' => env('DB_PASSWORD', 'arconko82'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

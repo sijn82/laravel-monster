@@ -27,7 +27,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+      // This was built automatically with php artisan make:auth
+//    protected $redirectTo = '/home';
+    protected $redirectTo = '/monsters';
 
     /**
      * Create a new controller instance.

@@ -3,7 +3,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <button class="newMonster-btn btn" @click="addMonster"> Add New Monster</button>
+                    <div v-if="validUser_id">
+                        <button class="newMonster-btn btn btn-success" @click="addMonster"> Add New Monster</button>
+                    </div>
+                    <div v-else="!validUser_id">
+                        <p><strong>Please login/register to create a New Monster or edit one you created earlier.</strong></p>
+                    </div>
                     <div class="panel-heading">Monsters</div>
                     <div class="panel-body">
                         <p> This section will output the data from monsters.</p>
@@ -45,7 +50,8 @@
                                         <option value="bloodthirsty">Bloodthirsty</option>
                                     </select>
                                 </div>
-                                <div id="monsterButtons">
+                                <div id="monsterButtons" v-if="monster.user_id == validUser_id">
+                                    <p>{{monster.user_id}}</p>
 
                                     <button id="edit" :key="monster.id" class="btn btn-warning" @click="editingMonster(monster)">Edit</button>
 
@@ -105,6 +111,11 @@
             }
             &.monster_image {
                 padding-bottom: 10px;
+                img {
+                    width: 640px;
+                    height: 480px;
+                }
+
             }
             &.description {
                 color: #636b6f;
@@ -157,7 +168,9 @@
                     name: '',
                     description: '',
                     monster_aggression: '',
+                    user_id: '',
                 },
+                validUser_id: null,
 
                 editing: false,
                 editingValue:false,
@@ -165,6 +178,14 @@
         },
 
         methods: {
+
+//            getUser(){
+//                axios.get('api/user').then(
+//                    response => {
+//                        console.log(response)
+//                    }
+//                ).catch(error => console.log(error));
+//            },
 
             base64encoded: function (image){
 //                $exploded = explode(',', request('monster_image'));
@@ -187,6 +208,7 @@
                     response => {
                         console.log('Monster ' + monsterId + ' deleted');
                         console.log(response.data);
+//                        this.$delete(this.monsters, monsterId)
                     }
                 ).catch(error => console.log(error));
             },
@@ -221,13 +243,25 @@
                 return string.charAt(0).toUpperCase() + string.slice(1);
             },
             repairImageBase64(image) {
-                $exploded = explode('api/monsters/img/', image )
+                $exploded = explode('api/monsters/img/', image );
                 return $exploded[1];
             },
         },
 
         created() {
+
             let self = this;
+
+            axios.get('/api/user').then(
+                response => {
+                    console.log(response);
+                    console.log(response.data.id)
+                    self.validUser_id = response.data.id;
+                }
+            ).catch(error => console.log(error));
+
+
+
             axios.get('/api/monsters').then( response => {
 //                console.log(response);
                 self.monsters = response.data;
@@ -236,12 +270,12 @@
         },
 
         mounted() {
-            let self = this;
-            axios.get('/api/monsters').then( response => {
-//                console.log(response);
-                self.monsters = response.data;
-                console.log(self.monsters);
-            }).catch(error => console.log(error));
+//            let self = this;
+//            axios.get('/api/monsters').then( response => {
+////                console.log(response);
+//                self.monsters = response.data;
+//                console.log(self.monsters);
+//            }).catch(error => console.log(error));
             console.log('Component Monsters mounted.');
         },
 

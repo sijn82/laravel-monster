@@ -26,5 +26,6 @@ class VerifyCsrfToken extends Middleware
         '/monsters/public/img',
         '/public/img',
         '/img',
+        '/dashboard',
     ];
 }

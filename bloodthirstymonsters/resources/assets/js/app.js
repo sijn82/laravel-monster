@@ -22,6 +22,13 @@ import axios from 'axios';
 // window.axios.defaults.headers.common = {
 //     'X-Requested-With': 'XMLHttpRequest'
 // };
+window.axios = axios;
+axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
+
 // import Bootstrap from 'bootstrap-sass';
 // Vue.use(axios);
 // Vue.use(Bootstrap);
@@ -44,6 +51,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // Following the same pattern as the example above,
 // here are the main components to be created and pulled into this application.
 
+// My Custom Vue Components
 Vue.component('navbar', require('./components/Navbar.vue'));
 Vue.component('footerbar', require('./components/Footer.vue'));
 Vue.component('parallax', require('./components/Parallax.vue'));
@@ -51,6 +59,11 @@ Vue.component('monsters', require('./components/Monsters.vue'));
 Vue.component('NewMonster', require('./components/NewMonster.vue'));
 Vue.component('MonsterSolo', require('./components/MonsterSolo.vue'));
 Vue.component('coming-soon', require('./components/ComingSoon.vue'));
+
+// Laravel Passport Vue Components
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 
 // put this before creating your App instance in main.js

@@ -11,6 +11,12 @@
 |
 */
 
+
+// This was brought in by running 'php artisan make:auth'
+Auth::routes();
+Route::get('/dashboard', 'DashboardController@index');
+
+
 Route::get('/', function () {
     return view('master');
 //    return view('welcome');
@@ -68,3 +74,7 @@ Route::any('{all}', function () {
 
 //Route::get('img/{path}', 'ImageController@show')->where('path', '.*');
 //Route::get('storage/app/public/img/{path}', 'ImageController@show')->where('path', '.*');
+
+
+
+
