@@ -17,26 +17,25 @@
                             </div>
 
                             <div class="input-group input-group-md col-md-8 col-md-offset-2">
-                                    <label class="input-group-addon">Description:</label>
-                                    <textarea v-model="form.description" class="form-control description-textarea" type="text" name="description" placeholder="Enter Monster Description"></textarea>
-
+                                <label class="input-group-addon">Description:</label>
+                                <textarea v-model="form.description" class="form-control description-textarea" type="text" name="description" placeholder="Enter Monster Description"></textarea>
                             </div>
 
                                 <div class="input-group input-group-md col-md-8 col-md-offset-2">
-                                        <label class="input-group-addon">Aggression Level:</label>
-                                        <select class="form-control" v-model="form.aggression_level" name="aggression_level">
-                                            <option disabled value="">Select Aggression Level</option>
-                                            <option value="calm">Calm</option>
-                                            <option value="confused">Confused</option>
-                                            <option value="agitated">Agitated</option>
-                                            <option value="chasey">Chasey</option>
-                                            <option value="bloodthirsty">Bloodthirsty</option>
-                                        </select>
+                                    <label class="input-group-addon">Aggression Level:</label>
+                                    <select class="form-control" v-model="form.aggression_level" name="aggression_level">
+                                        <option disabled value="">Select Aggression Level</option>
+                                        <option value="calm">Calm</option>
+                                        <option value="confused">Confused</option>
+                                        <option value="agitated">Agitated</option>
+                                        <option value="chasey">Chasey</option>
+                                        <option value="bloodthirsty">Bloodthirsty</option>
+                                    </select>
                                 </div>
 
                                 <div class="input-group input-group-md col-md-8 col-md-offset-2">
-                                        <label class="input-group-addon">Upload Image:</label>
-                                        <input class="form-control" type="file" name="monster_image" @change="newFileUpload">
+                                    <label class="input-group-addon">Upload Image:</label>
+                                    <input class="form-control" type="file" name="monster_image" @change="newFileUpload">
                                 </div>
 
                             <div>
